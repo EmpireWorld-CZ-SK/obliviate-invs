@@ -1,4 +1,4 @@
-package mc.obliviate.inventory.configurable;
+package mc.obliviate.inventory.extension.configurable;
 
 import com.google.common.base.Preconditions;
 import mc.obliviate.util.versiondetection.ServerVersionController;

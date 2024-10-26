@@ -1,7 +1,7 @@
-package mc.obliviate.inventory.configurable.util;
+package mc.obliviate.inventory.extension.configurable.util;
 
 import com.google.common.base.Preconditions;
-import mc.obliviate.inventory.configurable.GuiConfigurationTable;
+import mc.obliviate.inventory.extension.configurable.GuiConfigurationTable;
 import mc.obliviate.util.placeholder.PlaceholderUtil;
 import mc.obliviate.util.string.StringUtil;
 import mc.obliviate.util.versiondetection.ServerVersionController;

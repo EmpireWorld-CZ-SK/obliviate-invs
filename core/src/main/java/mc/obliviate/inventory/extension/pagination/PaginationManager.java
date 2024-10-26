@@ -1,4 +1,4 @@
-package mc.obliviate.inventory.pagination;
+package mc.obliviate.inventory.extension.pagination;
 
 import mc.obliviate.inventory.Gui;
 import mc.obliviate.inventory.Icon;

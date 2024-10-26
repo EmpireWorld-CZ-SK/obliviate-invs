@@ -1,4 +1,4 @@
-package mc.obliviate.inventory.advancedslot;
+package mc.obliviate.inventory.extension.advanced;
 
 import mc.obliviate.inventory.Gui;
 import mc.obliviate.inventory.Icon;

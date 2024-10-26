@@ -1,4 +1,4 @@
-package mc.obliviate.inventory.advancedslot;
+package mc.obliviate.inventory.extension.advanced;
 
 import mc.obliviate.inventory.InventoryAPI;
 import mc.obliviate.inventory.event.GuiPreClickEvent;

@@ -1,4 +1,4 @@
-package mc.obliviate.inventory.configurable;
+package mc.obliviate.inventory.extension.configurable;
 
 import mc.obliviate.inventory.Icon;
 import org.bukkit.Material;

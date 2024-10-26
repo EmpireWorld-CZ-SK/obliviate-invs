@@ -1,8 +1,0 @@
-var adventure = "4.13.1"
-dependencies {
-    compileOnly project(':core')
-    compileOnly 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
-    implementation 'com.github.hamza-cskn:obliviate-utils:2.0.5'
-}
-
-project.setLibsDirName('../../target')

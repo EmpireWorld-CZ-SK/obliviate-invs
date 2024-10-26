@@ -1,9 +1,9 @@
-package mc.obliviate.inventory.configurable.util;
+package mc.obliviate.inventory.extension.configurable.util;
 
 import com.google.common.base.Preconditions;
-import mc.obliviate.inventory.configurable.ConfigurableGui;
-import mc.obliviate.inventory.configurable.DysfunctionalConfigIcon;
-import mc.obliviate.inventory.configurable.GuiConfigurationTable;
+import mc.obliviate.inventory.extension.configurable.ConfigurableGui;
+import mc.obliviate.inventory.extension.configurable.DysfunctionalConfigIcon;
+import mc.obliviate.inventory.extension.configurable.GuiConfigurationTable;
 import mc.obliviate.util.placeholder.PlaceholderUtil;
 import org.bukkit.configuration.ConfigurationSection;
 

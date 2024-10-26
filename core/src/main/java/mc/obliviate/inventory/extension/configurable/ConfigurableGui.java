@@ -1,8 +1,8 @@
-package mc.obliviate.inventory.configurable;
+package mc.obliviate.inventory.extension.configurable;
 
 import mc.obliviate.inventory.Gui;
 import mc.obliviate.inventory.Icon;
-import mc.obliviate.inventory.configurable.util.GuiSerializer;
+import mc.obliviate.inventory.extension.configurable.util.GuiSerializer;
 import mc.obliviate.util.placeholder.PlaceholderUtil;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
