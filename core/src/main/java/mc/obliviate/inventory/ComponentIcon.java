@@ -86,7 +86,7 @@ public class ComponentIcon implements GuiIcon {
 			}
 		}
 
-		meta.setLore(lore.stream().map(NMSUtil.LEGACY::serialize).collect(Collectors.toList()));
+		meta.lore(lore);
 		icon.getItem().setItemMeta(meta);
 		return this;
 	}
@@ -140,10 +140,9 @@ public class ComponentIcon implements GuiIcon {
 
 		if (NMSUtil.CAN_USE_COMPONENTS) {
 			try {
-				final List<String> loreComponents = (List<String>) LORE_FIELD.get(meta);
+				final List<Component> loreComponents = (List<Component>) LORE_FIELD.get(meta);
 
-				List<Component> list = (loreComponents == null) ? new ArrayList<>() : loreComponents.stream()
-						.map(SERIALIZER::deserialize).collect(Collectors.toList());
+				List<Component> list = (loreComponents == null) ? new ArrayList<>() : loreComponents;
 				list.addAll(lore);
 
 				return setLore(list);
@@ -152,14 +151,6 @@ public class ComponentIcon implements GuiIcon {
 				throw new RuntimeException("Could not append lore. Please report this to the plugin developer!");
 			}
 		}
-
-		List<String> serialized = lore.stream().map(NMSUtil.LEGACY::serialize).collect(Collectors.toList());
-		List<String> list = meta.getLore();
-		if (list != null) list.addAll(serialized);
-		else list = serialized;
-
-		// no need to re-call the component based method just call the legacy one
-		icon.setLore(list);
 		return this;
 	}
 
@@ -189,10 +180,9 @@ public class ComponentIcon implements GuiIcon {
 
 		if (NMSUtil.CAN_USE_COMPONENTS) {
 			try {
-				final List<String> loreComponents = (List<String>) LORE_FIELD.get(meta);
+				final List<Component> loreComponents = (List<Component>) LORE_FIELD.get(meta);
 
-				List<Component> list = (loreComponents == null) ? new ArrayList<>() : loreComponents.stream()
-						.map(SERIALIZER::deserialize).collect(Collectors.toList());
+				List<Component> list = (loreComponents == null) ? new ArrayList<>() : loreComponents;
 				list.addAll(index, newLines);
 
 				return setLore(list);
@@ -201,14 +191,6 @@ public class ComponentIcon implements GuiIcon {
 				throw new RuntimeException("Could not append lore. Please report this to the plugin developer!");
 			}
 		}
-
-		List<String> serialized = newLines.stream().map(NMSUtil.LEGACY::serialize).collect(Collectors.toList());
-		List<String> list = meta.getLore();
-		if (list != null) list.addAll(index, serialized);
-		else list = serialized;
-
-		// no need to re-call the component based method just call the legacy one
-		icon.setLore(list);
 		return this;
 	}
 
@@ -218,7 +200,6 @@ public class ComponentIcon implements GuiIcon {
 	 * @param newDamage durability
 	 * @return this
 	 */
-	@SuppressWarnings("deprecation")
 	@Nonnull
 	public ComponentIcon setDurability(final short newDamage) {
 		this.icon.setDurability(newDamage);

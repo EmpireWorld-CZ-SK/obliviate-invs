@@ -1,5 +1,6 @@
 package mc.obliviate.inventory;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -73,10 +74,10 @@ public class Icon implements GuiIcon {
 	 * @return this
 	 */
 	@Nonnull
-	public Icon setName(final String name) {
+	public Icon setName(final Component name) {
 		final ItemMeta meta = item.getItemMeta();
 		if (meta == null) return this;
-		meta.setDisplayName(name);
+		meta.displayName(name);
 		item.setItemMeta(meta);
 		return this;
 	}
@@ -89,10 +90,10 @@ public class Icon implements GuiIcon {
 	 * @return this
 	 */
 	@Nonnull
-	public Icon setLore(final List<String> lore) {
+	public Icon setLore(final List<Component> lore) {
 		final ItemMeta meta = item.getItemMeta();
 		if (meta == null) return this;
-		meta.setLore(lore);
+		meta.lore(lore);
 		item.setItemMeta(meta);
 		return this;
 	}
@@ -104,7 +105,7 @@ public class Icon implements GuiIcon {
 	 * @return this
 	 */
 	@Nonnull
-	public Icon setLore(final String... lore) {
+	public Icon setLore(final Component... lore) {
 		return setLore(new ArrayList<>(Arrays.asList(lore)));
 	}
 
@@ -115,10 +116,10 @@ public class Icon implements GuiIcon {
 	 * @return this
 	 */
 	@Nonnull
-	public Icon appendLore(final List<String> newLines) {
+	public Icon appendLore(final List<Component> newLines) {
 		final ItemMeta meta = item.getItemMeta();
 		if (meta == null) return this;
-		List<String> lore = meta.getLore();
+		List<Component> lore = meta.lore();
 		if (lore != null) lore.addAll(newLines);
 		else lore = newLines;
 		return setLore(lore);
@@ -131,7 +132,7 @@ public class Icon implements GuiIcon {
 	 * @return this
 	 */
 	@Nonnull
-	public Icon appendLore(final String... newLines) {
+	public Icon appendLore(final Component... newLines) {
 		return appendLore(new ArrayList<>(Arrays.asList(newLines)));
 	}
 
@@ -143,7 +144,7 @@ public class Icon implements GuiIcon {
 	 * @return this
 	 */
 	@Nonnull
-	public Icon insertLore(final int index, final String... newLines) {
+	public Icon insertLore(final int index, final Component... newLines) {
 		return insertLore(index, new ArrayList<>(Arrays.asList(newLines)));
 	}
 
@@ -155,10 +156,10 @@ public class Icon implements GuiIcon {
 	 * @return this
 	 */
 	@Nonnull
-	public Icon insertLore(final int index, final List<String> newLines) {
+	public Icon insertLore(final int index, final List<Component> newLines) {
 		final ItemMeta meta = item.getItemMeta();
 		if (meta == null) return this;
-		List<String> lore = meta.getLore();
+		List<Component> lore = meta.lore();
 		if (lore != null) lore.addAll(index, newLines);
 		else lore = newLines;
 		return setLore(lore);
