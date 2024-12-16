@@ -1,4 +1,6 @@
-![Downloads](https://jitpack.io/v/hamza-cskn/obliviate-invs/month.svg) [![](https://jitpack.io/v/hamza-cskn/obliviate-invs.svg)](https://jitpack.io/#hamza-cskn/obliviate-invs) <-- current version
+![Downloads](https://jitpack.io/v/EmpireWorld-CZ-SK/obliviate-invs/month.svg) [![](https://jitpack.io/v/EmpireWorld-CZ-SK/obliviate-invs.svg)](https://jitpack.io/#EmpireWorld-CZ-SK/obliviate-invs) <-- current version
+
+Forked from [expxx](https://github.com/expxx/obliviate-invs), original project by [hmza-cskn](https://github.com/hamza-cskn/obliviate-invs)
 
 ## Maven
 
@@ -9,7 +11,7 @@
 </repository>
 
 <dependency>
-    <groupId>com.github.hamza-cskn.obliviate-invs</groupId>
+    <groupId>com.github.EmpireWorld-CZ-SK.obliviate-invs</groupId>
     <artifactId>core</artifactId>
     <version>{INSERT_VERSION_HERE}</version>
 </dependency>
@@ -21,8 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.hamza-cskn.obliviate-invs:core:{INSERT_VERSION_HERE}'
-    //implementation 'com.github.hamza-cskn.obliviate-invs:configurablegui:{INSERT_VERSION_HERE}'
+    implementation 'com.github.EmpireWorld-CZ-SK.obliviate-invs:{INSERT_VERSION_HERE}'
 }
 ```
 
