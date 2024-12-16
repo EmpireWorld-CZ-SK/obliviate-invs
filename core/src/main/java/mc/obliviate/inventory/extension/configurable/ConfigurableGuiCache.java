@@ -1,8 +1,8 @@
 package mc.obliviate.inventory.extension.configurable;
 
+import dev.dejvokep.boostedyaml.block.implementation.Section;
 import mc.obliviate.inventory.extension.configurable.util.ItemStackSerializer;
 import mc.obliviate.util.placeholder.PlaceholderUtil;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -32,26 +32,26 @@ public class ConfigurableGuiCache {
 
     }
 
-    public ItemStack getConfigItem(@Nonnull ConfigurationSection section, @Nonnull GuiConfigurationTable table) {
+    public ItemStack getConfigItem(@Nonnull Section section, @Nonnull GuiConfigurationTable table) {
         return this.getConfigItem(section, null, table);
     }
 
-    public ItemStack getConfigItem(@Nonnull ConfigurationSection section, PlaceholderUtil placeholderUtil, @Nonnull GuiConfigurationTable table) {
+    public ItemStack getConfigItem(@Nonnull Section section, PlaceholderUtil placeholderUtil, @Nonnull GuiConfigurationTable table) {
         ItemStack item = this.findItemStack(section, table).clone();
         ItemStackSerializer.applyPlaceholdersToItemStack(item, placeholderUtil);
         return item;
     }
 
-    public int getConfigSlot(@Nonnull ConfigurationSection section, @Nonnull GuiConfigurationTable table) {
+    public int getConfigSlot(@Nonnull Section section, @Nonnull GuiConfigurationTable table) {
         return section.getInt(table.getSlotSectionName());
     }
 
-    private ItemStack findItemStack(ConfigurationSection section, GuiConfigurationTable table) {
+    private ItemStack findItemStack(Section section, GuiConfigurationTable table) {
         ItemStack item = this.itemStackCache.get(section.getName());
         if (item != null) return item;
 
         ItemStack serializedItemStack = ItemStackSerializer.deserializeItemStack(section, table);
-        this.itemStackCache.put(section.getName(), serializedItemStack);
+        this.itemStackCache.put(section.getNameAsString(), serializedItemStack);
         return serializedItemStack;
     }
 }

@@ -1,11 +1,11 @@
 package mc.obliviate.inventory.extension.configurable.util;
 
 import com.google.common.base.Preconditions;
+import dev.dejvokep.boostedyaml.block.implementation.Section;
 import mc.obliviate.inventory.extension.configurable.ConfigurableGui;
 import mc.obliviate.inventory.extension.configurable.DysfunctionalConfigIcon;
 import mc.obliviate.inventory.extension.configurable.GuiConfigurationTable;
 import mc.obliviate.util.placeholder.PlaceholderUtil;
-import org.bukkit.configuration.ConfigurationSection;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -15,16 +15,16 @@ import java.util.List;
 public class GuiSerializer {
 
     @SuppressWarnings("ConstantConditions")
-    public static void putDysfunctionalIcons(@Nonnull ConfigurableGui gui, @Nonnull GuiConfigurationTable table, @Nonnull ConfigurationSection iconsSection, @Nullable PlaceholderUtil placeholderUtil, @Nonnull List<String> functionalSlots) {
+    public static void putDysfunctionalIcons(@Nonnull ConfigurableGui gui, @Nonnull GuiConfigurationTable table, @Nonnull Section iconsSection, @Nullable PlaceholderUtil placeholderUtil, @Nonnull List<String> functionalSlots) {
         Preconditions.checkNotNull(gui, "dysfunctional icons could not put because gui was null!");
         Preconditions.checkNotNull(iconsSection, "null configuration section given!");
 
-        for (final String sectionName : iconsSection.getKeys(false)) {
-            final ConfigurationSection section = iconsSection.getConfigurationSection(sectionName);
+        for (final String sectionName : iconsSection.getRoutesAsStrings(false)) {
+            final Section section = iconsSection.getSection(sectionName);
 
             if (functionalSlots.contains(sectionName)) continue;
-            if (!section.isSet(table.getSlotSectionName())) continue;
-            if (!section.isSet(table.getMaterialSectionName())) continue;
+            if (!section.contains(table.getSlotSectionName())) continue;
+            if (!section.contains(table.getMaterialSectionName())) continue;
 
             final int slotNo = section.getInt(table.getSlotSectionName(), -1);
             if (slotNo >= 0) {
@@ -35,7 +35,7 @@ public class GuiSerializer {
             final List<Integer> slots = parseSlotString(section.getString(table.getSlotSectionName()));
             if (!slots.isEmpty()) {
                 slots.forEach(slot -> {
-                    ConfigurationSection iconSection = iconsSection.getConfigurationSection(sectionName);
+                    Section iconSection = iconsSection.getSection(sectionName);
                     gui.addItem(slot, new DysfunctionalConfigIcon(gui.getGuiCache().getConfigItem(section, placeholderUtil, table), iconSection));
                 });
             }

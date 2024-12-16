@@ -1,9 +1,9 @@
 package mc.obliviate.inventory.extension.configurable;
 
 import com.google.common.base.Preconditions;
+import dev.dejvokep.boostedyaml.block.implementation.Section;
 import mc.obliviate.util.versiondetection.ServerVersionController;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.ConfigurationSection;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -28,9 +28,9 @@ public class GuiConfigurationTable {
     private String enchantmentsSectionName = "enchantments";
     private String customModelDataSectionName = "custom-model-data";
 
-    private final ConfigurationSection menuConfiguration;
+    private final Section menuConfiguration;
 
-    public GuiConfigurationTable(@Nullable ConfigurationSection menuConfiguration) {
+    public GuiConfigurationTable(@Nullable Section menuConfiguration) {
         this.menuConfiguration = menuConfiguration;
         ServerVersionController.calculateServerVersion(Bukkit.getServer());
     }
@@ -43,9 +43,9 @@ public class GuiConfigurationTable {
         GuiConfigurationTable.defaultConfigurationTable = defaultConfigurationTable;
     }
 
-    public ConfigurationSection getMenusSection(@Nonnull String section) {
+    public Section getMenusSection(@Nonnull String section) {
         Preconditions.checkNotNull(this.menuConfiguration, "No GUI configuration specified. If you're the developer, visit Wiki of obliviate-invs.");
-        return this.menuConfiguration.getConfigurationSection(section);
+        return this.menuConfiguration.getSection(section);
     }
 
     public String getTitleSectionName() {
@@ -128,7 +128,7 @@ public class GuiConfigurationTable {
         this.customModelDataSectionName = customModelDataSectionName;
     }
 
-    public ConfigurationSection getMenuConfiguration() {
+    public Section getMenuConfiguration() {
         return this.menuConfiguration;
     }
 

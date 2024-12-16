@@ -1,11 +1,11 @@
 package mc.obliviate.inventory.extension.configurable;
 
+import dev.dejvokep.boostedyaml.block.implementation.Section;
 import mc.obliviate.inventory.Gui;
 import mc.obliviate.inventory.Icon;
 import mc.obliviate.inventory.extension.configurable.util.GuiSerializer;
 import mc.obliviate.util.placeholder.PlaceholderUtil;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
@@ -67,7 +67,7 @@ public class ConfigurableGui extends Gui {
      *
      * @return Configuration section of Gui.
      */
-    public ConfigurationSection getSection() {
+    public Section getSection() {
         return this.guiConfigurationTable.getMenusSection(getSectionPath());
     }
 
@@ -84,8 +84,8 @@ public class ConfigurableGui extends Gui {
      * @param subSection name of any section that sub of gui section.
      * @return sub configuration section of gui section
      */
-    public ConfigurationSection getSection(String subSection) {
-        return getSection().getConfigurationSection(subSection);
+    public Section getSection(String subSection) {
+        return getSection().getSection(subSection);
     }
 
     public String getIconsSectionPath() {
@@ -104,7 +104,7 @@ public class ConfigurableGui extends Gui {
      * @param iconSection name of icon
      * @return sub configuration section of icons section
      */
-    public ConfigurationSection getIconsSection(@Nonnull String iconSection) {
+    public Section getIconsSection(@Nonnull String iconSection) {
         return this.guiConfigurationTable.getMenusSection(getIconsSectionPath() + "." + iconSection);
     }
 
@@ -118,7 +118,7 @@ public class ConfigurableGui extends Gui {
      *
      * @return sub configuration section of gui section
      */
-    public ConfigurationSection getIconsSection() {
+    public Section getIconsSection() {
         return this.guiConfigurationTable.getMenusSection(getIconsSectionPath());
     }
 
