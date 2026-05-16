@@ -26,7 +26,6 @@ subprojects {
     java {
         sourceCompatibility = 25
         targetCompatibility = 25
-        toolchain.languageVersion.set(JavaLanguageVersion.of(25))
     }
 
     repositories {
