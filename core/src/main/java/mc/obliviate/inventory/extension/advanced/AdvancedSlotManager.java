@@ -91,13 +91,13 @@ public class AdvancedSlotManager {
                             break;
                         case SWAP_WITH_CURSOR:
                             //check is it put action
-                            if (!isNullOrAir(e.getCursor()) && aSlot.getPrePutClickAction().test(e, e.getCursor()))
+                            if (!isNullOrAir(e.getView().getCursor()) && aSlot.getPrePutClickAction().test(e, e.getView().getCursor()))
                                 return;
                             break;
                         case PLACE_ALL:
                         case PLACE_ONE:
                         case PLACE_SOME:
-                            if (aSlot.getPrePutClickAction().test(e, e.getCursor())) return;
+                            if (aSlot.getPrePutClickAction().test(e, e.getView().getCursor())) return;
                     }
 
                     e.setCancelled(false);
@@ -121,23 +121,22 @@ public class AdvancedSlotManager {
                             break;
                         case SWAP_WITH_CURSOR:
                             aSlot.getPickupAction().accept(e, e.getCurrentItem());
-                            aSlot.getPutAction().accept(e, e.getCursor());
+                            aSlot.getPutAction().accept(e, e.getView().getCursor());
                             break;
                         case HOTBAR_SWAP:
-                        case HOTBAR_MOVE_AND_READD:
                             aSlot.getPickupAction().accept(e, e.getCurrentItem());
                             ItemStack hotbarItem = getItemStackFromHotkeyClick(e);
                             if (hotbarItem != null)
                                 aSlot.getPutAction().accept(e, hotbarItem);
                             break;
                         case PLACE_ONE:
-                            aSlot.getPutAction().accept(e, getCopyOfItemWithAmount(e.getCursor(), 1));
+                            aSlot.getPutAction().accept(e, getCopyOfItemWithAmount(e.getView().getCursor(), 1));
                             break;
                         case PLACE_SOME:
-                            aSlot.getPutAction().accept(e, getCopyOfItemWithAmount(e.getCursor(), e.getCursor().getMaxStackSize()));
+                            aSlot.getPutAction().accept(e, getCopyOfItemWithAmount(e.getView().getCursor(), e.getView().getCursor().getMaxStackSize()));
                             break;
                         case PLACE_ALL:
-                            aSlot.getPutAction().accept(e, e.getCursor());
+                            aSlot.getPutAction().accept(e, e.getView().getCursor());
                             break;
                         default:
                             return;
